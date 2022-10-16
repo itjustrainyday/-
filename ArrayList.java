@@ -1,11 +1,16 @@
 package test;
 
-interface LinerList2<ET>{
+interface LinerList2<ET>{ // 2장 다 보고 인터페이스 공부하기
 	void insert(ET e);
 	Boolean remove(ET e);
 	int search(ET e);
 	ET get(int index);
 	void show();
+	int binarySearch(int[] arr, int x);
+	//insert : 삽입
+	// remove : 삭제
+	// search : 값을 삽입 -> 해당 값의 배열(인덱스) 검색
+	// get : 해당 배열 값 반환
 }
 
 class ArrayListSorted <ET> implements LinerList2<ET> {
@@ -85,15 +90,38 @@ class ArrayListSorted <ET> implements LinerList2<ET> {
 		}
 		System.out.println();
 	}
-}
+	public int binarySearch(int[] arr, int x) //1,2,3,4,5,6,7,8,9,10 (x = 5)
+	{
+		int p = 0;
+		int q = arr.length -1;
+		while( p <= q) {
+			int m = (p+q)/2;
+			if(x == arr[m])
+				return m;
+			else if( x < arr[m])
+				q = m -1;
+			else p = m +1;
+		}
+		return -1;
+		}
+	}
+
 
 
 public class test2{
 	public static void main(String[] args) {
 		ArrayListSorted <Integer> al = new ArrayListSorted<Integer> ();
+		int[] arr = new int[] {1,6,8,12,17};
+		int x = 18;
 		al.insert(30);
 		al.insert(50);
-		int r = al.search(50);
+		al.insert(20);
+		al.insert(10);
+		al.insert(40);
+		System.out.println(al.binarySearch(arr, x));
+		int r = al.search(20);
 		System.out.println(r);
+		System.out.println(al.get(3));
+		al.show();
 	}
 }
