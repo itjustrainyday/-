@@ -2,7 +2,6 @@ package test;
 
 import java.util.Scanner;
 import java.util.LinkedList;
-
 //ET = Element Type
 
 //LinearList 인터페이스
