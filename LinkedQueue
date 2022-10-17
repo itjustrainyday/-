@@ -1,0 +1,54 @@
+package Test;
+import java.util.*;//NoSuchElementException
+class LinkedQueue <ET> {
+	private  Node<ET> rear; 
+	private  int size;   // number of nodes
+	
+	public LinkedQueue() {
+		rear = null;
+	}
+
+	public void add(ET elem) {
+		Node<ET> cn = new Node<ET>( elem );
+		if(rear == null)
+			cn.next = cn;
+		else {
+			cn.next = rear.next;
+			rear.next = cn;
+		}
+		rear = cn;  // 새 노드가 rear가 됨.
+		
+		size++;
+	}
+	public ET remove() {
+		if(size() == 0) throw new NoSuchElementException();
+
+		Node<ET> front = rear.next;
+		if(size == 1)
+			rear = null;
+		else 	 
+			rear.next = front.next;
+			
+		size--;
+		return front.elem;
+	}
+	private int size() {
+		return  size; 
+	}
+	
+	class Node <ET>{
+		private ET  elem;
+		private Node<ET> next;
+
+		public Node( ET elem ) {
+			this.elem = elem;
+		}	
+	} // class Node
+
+}
+
+public class test2{
+	public static void main(String[] args) {
+		LinkedQueue<Integer> q = new LinkedQueue<Integer>();
+	}
+}
