@@ -9,7 +9,7 @@ class LinkedQueue <ET> {
 	}
 
 	public void add(ET elem) { //큐의 기능 삽입
-		Node<ET> cn = new Node<ET>( elem ); //cn 노드 선언(원소 elem을 가진)
+		Node<ET> cn = new Node<ET>( elem ); //cn 노드 선언(원소 elem을 가진) 여기서 elem은 class node에서 가져온 매개변수
 		if(rear == null) //뒷부분이 값이 없을 때
 			cn.next = cn; //cn.next 값이 cn의 값이 된다.?
 		else { //아닐시
@@ -41,8 +41,8 @@ class LinkedQueue <ET> {
 		private Node<ET> next; //next 필드 뒤의 노드
 
 		public Node( ET elem ) {
-			this.elem = elem;
-		}	
+			this.elem = elem; //add값에 원소를 삽입하기 위한 this() 사용? 
+		}//클래스 노드의 elem 값이 elem 매개변수 값이 된다? 
 	} // class Node
 
 }
