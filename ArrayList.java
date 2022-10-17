@@ -123,5 +123,6 @@ public class test2{
 		System.out.println(r);
 		System.out.println(al.get(3));
 		al.show();
+		
 	}
 }
