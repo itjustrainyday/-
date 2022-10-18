@@ -1,4 +1,4 @@
-package Test;
+package test;
 
 import java.util.*;  // for EmptyStackException
 
@@ -12,43 +12,45 @@ interface Stack<ET> {
 }
 
 class SLinkedStack<ET> implements Stack<ET>  {
-	private  Node<ET> top;
+	private  Node<ET> top; //Node top 선언 노트의 처음
 	private  int size;  // number of nodes in stack
 		
 	public SLinkedStack() {
-		top = null;
-		size = 0; 
+		top = null; //시작하면 아무것도 없기 때문에 null값이다
+		size = 0; //위에와 동일
 	}
 	public void push(ET theElem) {
 		top = new Node<ET>( theElem, top ); // add node 
-		size++;
+		size++; //노드안에 값을 넣어줬기 때문에 1을 추가한다.
 	}
 	public ET pop() {
-		if(top == null) 
-			return null;
-		
-		Node<ET> np = top;
-		top = top.next;  // 삭제 
-		size--;
-		return np.elem;
+		if(top == null) //안에 값이 아무것도 없다면
+			return null; //null 값을 리턴해준다
+		Node<ET> np = top; //top 값을 넣어줄 노드 np 선언
+		top = top.next;  // top이 top next를 가리키는 값으로 된다
+		size--; //size가 작아진다
+		return np.elem; //해당 제거 np값 리턴
 	}
 	public int size() { 
-		return  size; 
+		return  size; //사이즈 값을 리턴
 	}	
 	class Node<ET>{
-		private  ET elem;
-		private  Node<ET> next;
-			
-		Node( ET e, Node<ET> n ) {
-			elem = e;
-			next = n;
+		private  ET elem; // 접근할 수 있는 ET형 변수 elem 선언
+		private  Node<ET> next; //접근할 수 있는 Node <ET> next 선언
+		Node( ET e, Node<ET> n ) { //Node 생성자 선언
+			elem = e; //elem이 매개변수 e가 된다?
+			next = n; //next가 매개변수 n이 된다?
 		}
 	} // class Node
-
 }
 
-public class Main{
+public class test2{
 	public static void main(String[] args) {
 		SLinkedStack<Integer> a = new SLinkedStack<Integer>();
+		a.push(30);
+		a.push(40);
+		a.push(50);
+		System.out.println(a.pop());
+		System.out.println(a.size());
 	}
 }
