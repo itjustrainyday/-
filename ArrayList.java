@@ -22,6 +22,7 @@ class ArrayListSorted <ET> implements LinerList2<ET> { //LinerList를 상속받�
 	}
 	public ArrayListSorted(int initCapacity)//매개변수가 5
 	{
+		size = 0;
 		elem = (ET[]) new Object[initCapacity]; //elem[5] 생성 Object는 잘 모르겠음
 	}
 	public void insert(ET theElem) {
@@ -124,4 +125,3 @@ public class test2{
 		al.show();
 	}
 }
-
