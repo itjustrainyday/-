@@ -1,0 +1,80 @@
+package data;
+
+class BST<KT extends Comparable<KT>>
+{
+	Node<KT> root;
+	
+	class Node<KT extends Comparable<KT>>{
+		private KT key;
+		private Node lc, rc;
+		public Node(KT key) {
+			this.key = key;
+		}
+	}
+	public KT search(KT theKey) {
+		Node<KT> qn = root;
+		while(qn!=null) {
+			if(theKey<qn.key) qn = qn.lc;
+			else if( theKey<qn.key) qn = qn.rc;
+			else return qn.key;
+		}
+		return null;//not found
+	}
+	public boolean insert(KT theKey) {
+		Node<KT> qn = root;
+		Node<KT> pn = null;
+		if(root==null) {
+			root = new Node<KT>(theKey);
+			return true;
+		}
+		while(qn!=null) {
+			pn = qn;
+			if(theKey<qn.key) qn = qn.lc;
+			else if( theKey<qn.key) qn = qn.rc;
+			else return false;
+		}
+		Node newNode = new Node<KT>(theKey);
+		if(theKey<pn.key) pn.lc = newNode;
+		else pn.rc = newNode;
+		return true;
+	}
+	public boolean remove(KT theKey) {
+		Node<KT> qn = root;
+		Node<KT> pn = null;
+		while(qn!=null&&theKey!=qn.key) {
+			pn = qn;
+			if(theKey<qn.key) qn = qn.lc;
+			else qn = qn.rc;
+		}
+		if(qn==null)
+			return false;
+		if(qn.lc!=null&&qn.rc!=null) {
+			Node<KT> q = qn.lc, p = qn;
+			while(q.rc!=null) {
+				p = q;
+				q = q.rc;
+			}
+			qn.key = q.key;
+			qn = q;
+			pn = p;
+		}
+			Node<KT> cn = qn.lc;
+			if(qn.lc ==null) cn = qn.rc;
+			if(qn == root) root = cn;
+			else {
+				if(qn == pn.lc) pn.lc = cn;
+				else pn.rc = cn;
+			}
+			return true;
+		}
+}
+	
+
+
+public class test1 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
