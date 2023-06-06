@@ -9,7 +9,6 @@ class MinHeap<ET extends Comparable <ET>>{//public 클래스는 하나만 존재
 	
 	public MinHeap() {
 		this(INIT_CAP);
-		1
 	}
 	public MinHeap(int capacity) {
 		arr = (ET[]) new Comparable[capacity+1];
